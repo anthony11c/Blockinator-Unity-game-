@@ -1,2 +1,2 @@
 # blockTVZer
-Repozitorij za projekt igre
+Repozitorij za projekt iz kolegija Računalne igre
