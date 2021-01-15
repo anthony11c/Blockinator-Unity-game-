@@ -31,10 +31,10 @@ public class CubeController : MonoBehaviour
     {
         if (_moving)
         {
-            float deltaRotation = rotationSpeed * Time.deltaTime;
-            if (_totalRotation + deltaRotation >= 90)
+            float deltaRotation = rotationSpeed * Time.deltaTime * 2.0f;
+            if (_totalRotation + deltaRotation >= 91)
             {
-                deltaRotation = 90 - _totalRotation;
+                deltaRotation = 91 - _totalRotation;
                 _moving = false;
             }
             if ((_rotationDirection == Direction.West) || (_rotationDirection == Direction.North))
@@ -43,10 +43,10 @@ public class CubeController : MonoBehaviour
 
             _totalRotation += deltaRotation;
         }
-        else if (Input.GetKeyUp(KeyCode.W)) Rotate(Direction.North);
-        else if (Input.GetKeyUp(KeyCode.A)) Rotate(Direction.West);
-        else if (Input.GetKeyUp(KeyCode.S)) Rotate(Direction.South);
-        else if (Input.GetKeyUp(KeyCode.D)) Rotate(Direction.East);
+        else if (Input.GetKeyUp(KeyCode.D)) Rotate(Direction.North);
+        else if (Input.GetKeyUp(KeyCode.W)) Rotate(Direction.West);
+        else if (Input.GetKeyUp(KeyCode.A)) Rotate(Direction.South);
+        else if (Input.GetKeyUp(KeyCode.S)) Rotate(Direction.East);
 
     }
 
