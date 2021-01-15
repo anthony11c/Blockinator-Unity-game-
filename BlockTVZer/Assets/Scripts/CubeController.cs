@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public enum Direction
 {
@@ -13,83 +12,79 @@ public enum Direction
 public class CubeController : MonoBehaviour
 {
 
-    private float rotationSpeed = 200f, totalRotation;
-    private bool isMoving;
-    private Direction rotationDirection;
-    private Vector3 pivot, axis, scale;
+    public float rotationSpeed = 250;
+
+    private bool _moving;
+    private Direction _rotationDirection;
+    private Vector3 _pivot;
+    private float _totalRotation;
+    private Vector3 _axis;
+    private Vector3 _scale;
 
     void Start()
     {
-        isMoving = false;
-        scale = transform.localScale / 2f;
+        _moving = false;
+        _scale = transform.localScale / 2.0f;
     }
 
     void Update()
     {
-        if (isMoving)
+        if (_moving)
         {
             float deltaRotation = rotationSpeed * Time.deltaTime;
-            if (totalRotation + deltaRotation >= 90f)
+            if (_totalRotation + deltaRotation >= 90)
             {
-                deltaRotation = 90f - totalRotation;
-                isMoving = false;
+                deltaRotation = 90 - _totalRotation;
+                _moving = false;
             }
-            if ((rotationDirection == Direction.West) || (rotationDirection == Direction.North))
-                transform.RotateAround(pivot, axis, deltaRotation);
-            else transform.RotateAround(pivot, axis, -deltaRotation);
-            totalRotation += deltaRotation;
+            if ((_rotationDirection == Direction.West) || (_rotationDirection == Direction.North))
+                transform.RotateAround(_pivot, _axis, deltaRotation);
+            else transform.RotateAround(_pivot, _axis, -deltaRotation);
+
+            _totalRotation += deltaRotation;
         }
-        else if (Input.GetKeyDown(KeyCode.W)) Rotate(Direction.North);
-        else if (Input.GetKeyDown(KeyCode.A)) Rotate(Direction.West);
-        else if (Input.GetKeyDown(KeyCode.S)) Rotate(Direction.South);
-        else if (Input.GetKeyDown(KeyCode.D)) Rotate(Direction.East);
+        else if (Input.GetKeyUp(KeyCode.W)) Rotate(Direction.North);
+        else if (Input.GetKeyUp(KeyCode.A)) Rotate(Direction.West);
+        else if (Input.GetKeyUp(KeyCode.S)) Rotate(Direction.South);
+        else if (Input.GetKeyUp(KeyCode.D)) Rotate(Direction.East);
+
     }
 
     void Rotate(Direction direction)
     {
-        rotationDirection = direction;
-        isMoving = true;
-        totalRotation = 0f;
-        switch (rotationDirection)
+        _rotationDirection = direction;
+        _moving = true;
+        _totalRotation = 0;
+
+        switch (_rotationDirection)
         {
             case Direction.East:
-                pivot = transform.position + new Vector3(scale.x, -scale.y, 0);
+                _pivot = transform.position + new Vector3(_scale.x, -_scale.y, 0);
                 break;
             case Direction.West:
-                pivot = transform.position + new Vector3(-scale.x, -scale.y, 0);
+                _pivot = transform.position + new Vector3(-_scale.x, -_scale.y, 0);
                 break;
             case Direction.North:
-                if (transform.localEulerAngles.x != 0)
-                {
-                    if (transform.localEulerAngles.x == -90)
-                    {
-                        pivot = transform.position + new Vector3(0, -scale.y, scale.z + 0.9f);
-                    }
-                    else
-                    {
-                        pivot = transform.position + new Vector3(0, -scale.y, scale.z);
-                    }
-                }
-                else
-                    pivot = transform.position + new Vector3(0, -scale.y - 0.9f, scale.z);
+                _pivot = transform.position + new Vector3(0, -_scale.y, _scale.z);
                 break;
             case Direction.South:
-                pivot = transform.position + new Vector3(0, -scale.y, -scale.z);
+                _pivot = transform.position + new Vector3(0, -_scale.y, -_scale.z);
                 break;
         }
-        if ((rotationDirection == Direction.East) || (rotationDirection == Direction.West))
+
+        if ((_rotationDirection == Direction.East) || (_rotationDirection == Direction.West))
         {
-            axis = Vector3.forward;
-            float temp = scale.x;
-            scale.x = scale.y;
-            scale.y = temp;
+            _axis = Vector3.forward;
+            float temp = _scale.x;
+            _scale.x = _scale.y;
+            _scale.y = temp;
         }
         else
         {
-            axis = Vector3.right;
-            float temp = scale.z;
-            scale.z = scale.y;
-            scale.y = temp;
+            _axis = Vector3.right;
+            float temp = _scale.z;
+            _scale.z = _scale.y;
+            _scale.y = temp;
         }
     }
 }
