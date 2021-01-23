@@ -97,4 +97,5 @@ public class Kretanje : MonoBehaviour
         center.transform.position = player.transform.position;
         input = true;
     }
+
 }
