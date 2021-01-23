@@ -21,10 +21,18 @@ public class CubeController : MonoBehaviour
     private Vector3 _axis;
     private Vector3 _scale;
 
+    //zvuk
+    AudioSource audioSource;
+    public float pocetniPitch = 1.36f;
+
+
     void Start()
     {
         _moving = false;
         _scale = transform.localScale / 2.0f;
+       
+        audioSource = GetComponent<AudioSource>();
+        audioSource.pitch = pocetniPitch;
     }
 
     void Update()
@@ -55,6 +63,7 @@ public class CubeController : MonoBehaviour
         _rotationDirection = direction;
         _moving = true;
         _totalRotation = 0;
+        zvukKretanja();
 
         switch (_rotationDirection)
         {
@@ -86,5 +95,11 @@ public class CubeController : MonoBehaviour
             _scale.z = _scale.y;
             _scale.y = temp;
         }
+    }
+
+    void zvukKretanja()
+    {
+        audioSource.pitch = Random.Range(pocetniPitch, pocetniPitch + 0.4f);
+        audioSource.Play();
     }
 }
