@@ -5181,6 +5181,11 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 2046043806}
+    - target: {fileID: 7543827941651121283, guid: 4f09828853ed77445b03fb3b58785726,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 7543827941651121304, guid: 4f09828853ed77445b03fb3b58785726,
         type: 3}
       propertyPath: m_Enabled
@@ -5200,6 +5205,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Igrac
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543827941651121305, guid: 4f09828853ed77445b03fb3b58785726,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543827941651121308, guid: 4f09828853ed77445b03fb3b58785726,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543827941651121308, guid: 4f09828853ed77445b03fb3b58785726,
+        type: 3}
+      propertyPath: m_Mass
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543827941651121308, guid: 4f09828853ed77445b03fb3b58785726,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7543827941651121309, guid: 4f09828853ed77445b03fb3b58785726,
         type: 3}
