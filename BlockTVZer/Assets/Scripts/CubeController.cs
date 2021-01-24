@@ -30,7 +30,6 @@ public class CubeController : MonoBehaviour
     public int brojPokreta;
     public Text score;
 
-
     void Start()
     {
         _moving = false;
@@ -62,7 +61,6 @@ public class CubeController : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.W)) Rotate(Direction.West);
         else if (Input.GetKeyUp(KeyCode.A)) Rotate(Direction.South);
         else if (Input.GetKeyUp(KeyCode.S)) Rotate(Direction.East);
-
     }
 
     void Rotate(Direction direction)
@@ -115,5 +113,25 @@ public class CubeController : MonoBehaviour
     {
         brojPokreta += 1;
         score.GetComponent<Text>().text = brojPokreta.ToString();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        float pozicijaY = 0;
+
+        if (collision.collider.name == "Kraj")
+        {
+            //provjera je li kraj nivoa
+            pozicijaY = this.transform.position.y;
+            print(pozicijaY);
+            if (pozicijaY > 6.2)
+            {
+                this.GetComponent<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                print("pozicija ne valja, ona je "+ pozicijaY);
+            }
+        }
     }
 }
