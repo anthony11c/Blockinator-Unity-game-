@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public enum Direction
@@ -25,6 +26,10 @@ public class CubeController : MonoBehaviour
     AudioSource audioSource;
     public float pocetniPitch = 1.36f;
 
+    //pokreti
+    public int brojPokreta;
+    public Text score;
+
 
     void Start()
     {
@@ -33,6 +38,8 @@ public class CubeController : MonoBehaviour
        
         audioSource = GetComponent<AudioSource>();
         audioSource.pitch = pocetniPitch;
+
+        brojPokreta = 0;
     }
 
     void Update()
@@ -64,6 +71,7 @@ public class CubeController : MonoBehaviour
         _moving = true;
         _totalRotation = 0;
         zvukKretanja();
+        povecajBrojPokreta();
 
         switch (_rotationDirection)
         {
@@ -101,5 +109,11 @@ public class CubeController : MonoBehaviour
     {
         audioSource.pitch = Random.Range(pocetniPitch, pocetniPitch + 0.4f);
         audioSource.Play();
+    }
+
+    void povecajBrojPokreta()
+    {
+        brojPokreta += 1;
+        score.GetComponent<Text>().text = brojPokreta.ToString();
     }
 }
