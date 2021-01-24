@@ -127,6 +127,7 @@ public class CubeController : MonoBehaviour
             if (pozicijaY > 6.2)
             {
                 this.GetComponent<BoxCollider>().enabled = false;
+                this.GetComponent<CubeController>().enabled = false;
             }
             else
             {
