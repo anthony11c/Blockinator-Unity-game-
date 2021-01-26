@@ -12,12 +12,6 @@ public class TweenText : MonoBehaviour
         Tween();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Tween()
     {
         LeanTween.cancel(gameObject);
