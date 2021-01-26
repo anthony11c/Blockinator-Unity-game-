@@ -69,6 +69,13 @@ public class CubeController : MonoBehaviour
         if (this.transform.position.y < -15)
         {
             this.GetComponent<BoxCollider>().enabled = true;
+            
+            //nestajanje lika
+            if(this.transform.position.y < -45)
+            {
+                this.GetComponent<MeshRenderer>().enabled = false;
+            }
+
         }
     }
 
