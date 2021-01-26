@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public enum Direction
 {
@@ -16,6 +17,7 @@ public class CubeController : MonoBehaviour
     public float rotationSpeed = 250;
 
     private bool _moving;
+    public bool prolaz;
     private Direction _rotationDirection;
     private Vector3 _pivot;
     private float _totalRotation;
@@ -33,6 +35,7 @@ public class CubeController : MonoBehaviour
     void Start()
     {
         _moving = false;
+        prolaz = false;
         _scale = transform.localScale / 2.0f;
        
         audioSource = GetComponent<AudioSource>();
@@ -61,6 +64,12 @@ public class CubeController : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.W)) Rotate(Direction.West);
         else if (Input.GetKeyUp(KeyCode.A)) Rotate(Direction.South);
         else if (Input.GetKeyUp(KeyCode.S)) Rotate(Direction.East);
+
+        //reset collidera nakon pada kroz rupu
+        if (this.transform.position.y < -15)
+        {
+            this.GetComponent<BoxCollider>().enabled = true;
+        }
     }
 
     void Rotate(Direction direction)
@@ -101,6 +110,7 @@ public class CubeController : MonoBehaviour
             _scale.z = _scale.y;
             _scale.y = temp;
         }
+
     }
 
     void zvukKretanja()
@@ -127,12 +137,26 @@ public class CubeController : MonoBehaviour
             if (pozicijaY > 6.2)
             {
                 this.GetComponent<BoxCollider>().enabled = false;
-                this.GetComponent<CubeController>().enabled = false;
+               // this.GetComponent<CubeController>().enabled = false;
+                prolaz = true;
             }
             else
             {
-                print("pozicija ne valja, ona je "+ pozicijaY);
+               // print("pozicija ne valja, ona je "+ pozicijaY);
             }
+        }
+
+
+        //promijena ili restart nivoa
+        string imeScene = SceneManager.GetActiveScene().name;
+
+        if (collision.collider.name == "Prolaz" && prolaz == false)
+        {
+            SceneManager.LoadScene(imeScene);
+        }
+        else if (collision.collider.name == "Prolaz" && prolaz == true)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
