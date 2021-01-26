@@ -3739,7 +3739,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.47900003, y: 0.45966053}
   m_AnchorMax: {x: 0.5192632, y: 0.53850466}
-  m_AnchoredPosition: {x: 487, y: 221}
+  m_AnchoredPosition: {x: 528.7, y: 221}
   m_SizeDelta: {x: 4.0999985, y: 3.2999992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1637634854
@@ -3763,11 +3763,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 36
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 45
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -5150,6 +5150,11 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 320
       objectReference: {fileID: 0}
+    - target: {fileID: 7543827941651121283, guid: 4f09828853ed77445b03fb3b58785726,
+        type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 1637634854}
     - target: {fileID: 7543827941651121304, guid: 4f09828853ed77445b03fb3b58785726,
         type: 3}
       propertyPath: m_Enabled

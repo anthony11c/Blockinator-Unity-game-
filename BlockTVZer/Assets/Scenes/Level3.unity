@@ -1427,6 +1427,16 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 1069746364}
+    - target: {fileID: 7543827941651121283, guid: 4f09828853ed77445b03fb3b58785726,
+        type: 3}
+      propertyPath: time
+      value: 
+      objectReference: {fileID: 588150574}
+    - target: {fileID: 7543827941651121283, guid: 4f09828853ed77445b03fb3b58785726,
+        type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 588150574}
     - target: {fileID: 7543827941651121305, guid: 4f09828853ed77445b03fb3b58785726,
         type: 3}
       propertyPath: m_Name
@@ -1753,11 +1763,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 36
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1840,7 +1850,7 @@ Canvas:
   m_GameObject: {fileID: 614088877}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1200873037}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

@@ -32,6 +32,10 @@ public class CubeController : MonoBehaviour
     public int brojPokreta;
     public Text score;
 
+    //timer
+    public float timer;
+    public Text timerText;
+
     void Start()
     {
         _moving = false;
@@ -46,6 +50,7 @@ public class CubeController : MonoBehaviour
 
     void Update()
     {
+        povecajBrojSekundi();
         if (_moving)
         {
             float deltaRotation = rotationSpeed * Time.deltaTime * 2.0f;
@@ -130,6 +135,18 @@ public class CubeController : MonoBehaviour
     {
         brojPokreta += 1;
         score.GetComponent<Text>().text = brojPokreta.ToString();
+        
+    }
+
+    void povecajBrojSekundi()
+    {
+        timer += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(timer / 60F);
+        int seconds = Mathf.FloorToInt(timer % 60F);
+        int milliseconds = Mathf.FloorToInt((timer * 100F) % 100F);
+        timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + milliseconds.ToString("00");
+        
+        timerText.GetComponent<Text>().text = timerText.text;
     }
 
     void OnCollisionEnter(Collision collision)
