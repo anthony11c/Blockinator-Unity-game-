@@ -36,6 +36,10 @@ public class CubeController : MonoBehaviour
     public float timer;
     public Text timerText;
 
+    //highscore
+
+    public Text highscore;
+
     void Start()
     {
         _moving = false;
@@ -142,6 +146,8 @@ public class CubeController : MonoBehaviour
     {
         brojPokreta += 1;
         score.GetComponent<Text>().text = brojPokreta.ToString();
+
+        PlayerPrefs.SetInt("HighScore", brojPokreta);
         
     }
 
