@@ -70,6 +70,13 @@ public class CubeController : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.A)) Rotate(Direction.South);
         else if (Input.GetKeyUp(KeyCode.S)) Rotate(Direction.East);
 
+
+        //povratak u menu s escapeom
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+
         //reset collidera nakon pada kroz rupu
         if (this.transform.position.y < -15)
         {
